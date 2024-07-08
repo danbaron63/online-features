@@ -1,0 +1,5 @@
+.idea
+.venv
+jars/build
+jars/.gradle
+*/__pycache__/
