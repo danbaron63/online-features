@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.4'
+    implementation 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0'
 }

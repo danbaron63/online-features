@@ -1,6 +1,6 @@
 .venv:
 	pyenv local 3.10
-	python -m venv .venv
+	python3 -m venv .venv
 
 .PHONY: install
 install: .venv
@@ -11,4 +11,3 @@ install: .venv
 .PHONY: clean
 clean:
 	rm -rf .venv jars/.gradle jars/build
-

@@ -1,2 +1,2 @@
-pyspark==3.3.4
+pyspark==3.5.0
 confluent-kafka
