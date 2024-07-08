@@ -30,6 +30,7 @@ transaction_df = (
         T.StructField("id", T.StringType()),
         T.StructField("uid", T.StringType()),
         T.StructField("amount", T.StringType()),
+        T.StructField("timestamp", T.StringType())
     ])
   ))
   .select(
@@ -37,9 +38,13 @@ transaction_df = (
     F.col("value").alias("raw"),
     F.col("parsed.id"),
     F.col("parsed.uid"),
-    F.col("parsed.amount").cast(T.FloatType()).alias("amount")
+    F.col("parsed.amount").cast(T.FloatType()).alias("amount"),
+    F.col("parsed.timestamp"),
   )
-  .groupBy("uid")
+  .groupBy(
+    F.window(F.col("timestamp"), "10 minutes", "5 minutes"),
+    "uid"
+  )
   .sum("amount").alias("total")
   .join(user_df, F.col("id") == F.col("uid"))
 )

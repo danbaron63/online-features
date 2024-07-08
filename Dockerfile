@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
+RUN apt update -y
+RUN apt upgrade -y
 RUN apt install -y python3 python3-pip
 RUN apt upgrade python3-pip
 

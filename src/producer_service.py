@@ -3,6 +3,7 @@ from src.utils.data_loader import get_random_record
 import json
 import socket
 import time
+from datetime import datetime
 import logging
 import os
 
@@ -31,7 +32,7 @@ def delivery_report(err, msg):
 while True:
     try:
         rec = get_random_record("data/transactions/file1.csv")
-
+        rec["timestamp"] = datetime.now().isoformat()
         logger.debug("fetched record from producer: %s", rec)
         logger.info("writing record")
         producer.produce("transactions", key=rec["id"], value=json.dumps(rec), callback=delivery_report)
