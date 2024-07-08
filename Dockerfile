@@ -7,10 +7,12 @@ RUN apt upgrade python3-pip
 
 WORKDIR /home
 
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
+
 # layer to make successive builds quicker with dependency changes
-RUN pip3 install pyspark==3.5.0 --break-system-packages
+RUN pip3 install pyspark==3.5.0
 COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt --break-system-packages
+RUN pip3 install -r requirements.txt
 
 # TODO: Fix this as when this layer is cached, code changes will not be detected
 COPY src/* src/
