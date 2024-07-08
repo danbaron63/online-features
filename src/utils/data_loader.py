@@ -28,5 +28,5 @@ def get_random_record_json(path):
 
 if __name__ == "__main__":
     print(
-        get_random_record_json("data/file1.csv")
+        get_random_record_json("data/transactions/file1.csv")
     )

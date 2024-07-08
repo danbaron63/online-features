@@ -1,17 +1,14 @@
-from src.spark import spark
+from src.utils.spark import spark
 from pyspark.sql import types as T
-from pyspark.sql import functions as F
 
 
 def file_stream():
     schema = T.StructType([
         T.StructField("id", T.IntegerType()),
         T.StructField("uid", T.IntegerType()),
-        T.StructField("firstname", T.StringType()),
-        T.StructField("surname", T.StringType()),
         T.StructField("amount", T.FloatType()),
     ])
-    sdf = spark.readStream.format("csv").option("header", "true").schema(schema).load("data")
+    sdf = spark.readStream.format("csv").option("header", "true").schema(schema).load("data/transactions")
 
     sdf = sdf.select("uid", "amount").groupBy("uid").sum("amount")
 
