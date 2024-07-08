@@ -15,7 +15,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # TODO: Fix this as when this layer is cached, code changes will not be detected
-COPY src/* src/
-COPY data/* data/
+COPY src src
+COPY data data
 
 CMD python3 -m src.producer_service
