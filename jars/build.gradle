@@ -9,4 +9,5 @@ repositories {
 
 dependencies {
     implementation 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0'
+    implementation 'org.postgresql:postgresql:42.2.5'
 }
