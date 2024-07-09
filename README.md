@@ -23,6 +23,10 @@ To install necessary python dependencies and build jars required by Spark, run:
 ```bash
 Make install
 ```
+To activate your virtual environment, run:
+```bash
+source .venv/bin/activate
+```
 
 # Run
 ## Run Kafka
