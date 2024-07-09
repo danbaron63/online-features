@@ -1,5 +1,6 @@
 services:
   kafka:
+    container_name: kafka
     image: 'bitnami/kafka:latest'
     ports:
       - '9092:9092'
@@ -15,9 +16,21 @@ services:
       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
     hostname: kafka
   producer:
+    container_name: producer
     build:
       dockerfile: ./Dockerfile
     depends_on:
       - kafka
     environment:
       - KAFKA_HOST=kafka
+  offline-store:
+    container_name: offline
+    image: postgres
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: offline_store
+

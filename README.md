@@ -21,7 +21,7 @@ This can either be in streaming or batch mode.
 # Installation
 To install necessary python dependencies and build jars required by Spark, run:
 ```bash
-Make install
+make install
 ```
 To activate your virtual environment, run:
 ```bash
