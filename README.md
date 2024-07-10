@@ -41,3 +41,33 @@ To run the Spark stream job run:
 ```bash
 python -m src.consumer_spark
 ```
+
+# Feature Store
+The [feature store](./demo/feature_repo) is available in `demo/feature_repo`.
+[Feature definitions](./demo/feature_repo/transaction_repo.py) are defined in `transaction_repo.py` and a [test workflow](./demo/feature_repo/test_workflow.py) is available to test the feature store by requesting online features via the feature server and Feast SDK.
+
+Note: to ensure data is available for the feature store, please run earlier steps and ensure the docker containers are up and running and the spark stream is running successfully. 
+See [Run](#run) section for more details.
+
+To setup the feature store, run:
+```bash
+cd demo/feature_repo
+feast plan
+feast apply
+```
+
+In order to populate the feature store, you must materialize the features from the offline store:
+```bash
+CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%S")
+feast materialize-incremental $CURRENT_TIME
+```
+
+To start the feast server run:
+```bash
+feast serve
+```
+
+You can then run the test workflow:
+```bash
+python test_workflow.py
+```

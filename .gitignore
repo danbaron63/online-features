@@ -3,3 +3,4 @@
 jars/build
 jars/.gradle
 **/__pycache__/
+**/*.db

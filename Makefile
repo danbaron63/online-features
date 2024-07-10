@@ -17,3 +17,4 @@ clean-jars:
 .PHONY: clean
 clean: clean-jars
 	rm -rf .venv
+	rm -rf demo/feature_repo/data
