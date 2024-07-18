@@ -16,5 +16,6 @@ RUN pip3 install -r requirements.txt
 
 COPY src src
 COPY data data
+COPY demo demo
 
 CMD python3 -m src.producer_service

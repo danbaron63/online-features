@@ -5,9 +5,7 @@ from pprint import pprint
 
 
 if __name__ == "__main__":
-    print("--- Retrieving features using SDK ---")
     store = FeatureStore(repo_path=".")
-
     entity_rows = [
         # {join_key: entity_value}
         {
@@ -26,6 +24,8 @@ if __name__ == "__main__":
         "spend_fresh_on_demand_fv:total_plus_val1",
         "spend_fresh_on_demand_fv:total_plus_val2",
     ]
+
+    print("--- Retrieving features using SDK ---")
     returned_features = store.get_online_features(
         features=features_to_fetch,
         entity_rows=entity_rows,

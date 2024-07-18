@@ -2,3 +2,4 @@
 .venv
 jars/.gradle
 **/__pycache__/
+**/*.db

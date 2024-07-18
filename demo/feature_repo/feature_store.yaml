@@ -5,7 +5,7 @@ registry: data/registry.db
 provider: local
 offline_store:
     type: postgres
-    host: localhost
+    host: host.docker.internal
     port: 5433
     database: offline_store
     user: user

@@ -26,6 +26,7 @@ services:
   offline-store:
     container_name: offline
     image: postgres
+    hostname: postgres
     restart: always
     ports:
       - '5433:5432'
@@ -33,4 +34,19 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
       POSTGRES_DB: offline_store
-
+  feast:
+    container_name: feast
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - '6566:6566'
+    depends_on:
+      - offline-store
+    command:
+      - "feast"
+      - "--feature-store-yaml"
+      - "/home/demo/feature_repo/feature_store.yaml"
+      - "serve"
+      - "--host"
+      - "0.0.0.0"
+    working_dir: /home/demo/feature_repo
