@@ -2,10 +2,13 @@ from feast import FeatureStore
 import requests
 import json
 from pprint import pprint
+import click
 
 
-if __name__ == "__main__":
-    store = FeatureStore(repo_path=".")
+@click.command()
+@click.option("--repo-path", default=".")
+def main(repo_path):
+    store = FeatureStore(repo_path=repo_path)
     entity_rows = [
         # {join_key: entity_value}
         {
@@ -42,3 +45,7 @@ if __name__ == "__main__":
         })
     )
     pprint(json.loads(response.text))
+
+
+if __name__ == "__main__":
+    main()
